@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+import { BRAND, PHONE_DISPLAY } from '../consts';
+---
+
+<Base title="Política de privacidade · Wave Studio" description="Como a Wave Studio trata os dados de quem visita o site e nos contacta pelo WhatsApp.">
+  <Header />
+  <main id="conteudo" tabindex="-1" class="legal">
+    <div class="wrap legal__wrap">
+      <h1 class="title">Política de privacidade</h1>
+      <p class="legal__updated">Última atualização: outubro de 2026</p>
+
+      <h2>O que recolhemos neste site</h2>
+      <p>Nada. O site não usa cookies, não tem ferramentas de análise e não guarda nenhum dado do formulário de contacto.</p>
+
+      <h2>Formulário e botões de WhatsApp</h2>
+      <p>Quando preenche o formulário ou carrega num botão de WhatsApp, o seu browser abre o WhatsApp com uma mensagem já escrita. Essa mensagem só nos chega se a decidir enviar. A partir daí, a conversa é tratada pelo WhatsApp (Meta), de acordo com a política de privacidade desse serviço.</p>
+
+      <h2>Para que usamos as mensagens</h2>
+      <p>Apenas para responder ao seu pedido e preparar um orçamento. Não partilhamos os seus contactos com terceiros nem os usamos para publicidade.</p>
+
+      <h2>Os seus direitos</h2>
+      <p>Pode pedir, a qualquer momento, para consultar, corrigir ou apagar os dados que tenha partilhado connosco. Basta enviar uma mensagem para o {PHONE_DISPLAY}. Pode também apresentar queixa à Comissão Nacional de Proteção de Dados (CNPD).</p>
+
+      <h2>Responsável</h2>
+      <p>{BRAND.name}, {BRAND.city}, Portugal.</p>
+
+      <p><a class="link-arrow" href="/">← Voltar ao início</a></p>
+    </div>
+  </main>
+  <Footer />
+  <WhatsAppFab />
+</Base>
+
+<script>
+  import '../scripts/main.ts';
+</script>

@@ -1,0 +1,9 @@
+---
+import IconWhatsApp from './IconWhatsApp.astro';
+import { WA_MESSAGES, waLink } from '../consts';
+---
+
+<a class="wa-fab" href={waLink(WA_MESSAGES.geral)} target="_blank" rel="noopener noreferrer" data-wa="flutuante">
+  <IconWhatsApp size={28} />
+  <span class="visually-hidden">Falar connosco no WhatsApp (abre numa nova janela)</span>
+</a>

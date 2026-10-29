@@ -1,0 +1,87 @@
+---
+const steps = [
+  {
+    n: '01',
+    title: 'Conversa',
+    items: [
+      'Percebemos o seu negócio, o público e a concorrência.',
+      'Definimos o que quer alcançar e em quanto tempo.',
+      'Fazemos as perguntas certas antes de propor seja o que for.',
+    ],
+  },
+  {
+    n: '02',
+    title: 'Plano',
+    items: [
+      'O que se faz, quando e com que objetivo.',
+      'Calendário editorial ou estrutura do site, por escrito.',
+      'Orçamento claro, sem surpresas.',
+    ],
+  },
+  {
+    n: '03',
+    title: 'Gravação e criação',
+    items: [
+      'Vamos ao local e gravamos o seu negócio real.',
+      'Criamos o conteúdo, o design ou o site.',
+      'Aprova tudo antes de ir para o ar.',
+    ],
+  },
+  {
+    n: '04',
+    title: 'Publicação e resultados',
+    items: [
+      'Publicamos nos dias e horas certos.',
+      'Acompanhamos os números todos os meses.',
+      'Ajustamos o que não funciona.',
+    ],
+  },
+];
+---
+
+<section class="section steps" id="como-trabalhamos" aria-labelledby="passos-titulo">
+  <div class="wrap">
+    <h2 class="title title--center" id="passos-titulo">4 passos para<br /> uma marca<br class="br-mobile" /> que cresce</h2>
+  </div>
+
+  <div class="carousel" data-carousel aria-roledescription="carrossel" aria-label="Os 4 passos do nosso trabalho">
+    <div class="carousel__stage" data-stage>
+      <ol class="carousel__ring">
+        {steps.map((s, i) => (
+          <li class:list={['step', { 'is-front': i === 0 }]} data-slide aria-roledescription="passo" aria-label={`${i + 1} de ${steps.length}: ${s.title}`}>
+            <div class="step__card">
+              <p class="step__num" aria-hidden="true">{s.n}</p>
+              <h3 class="step__title">{s.title}</h3>
+              <ul class="step__list">
+                {s.items.map((it) => (
+                  <li>
+                    <svg class="step__check" viewBox="0 0 18 18" aria-hidden="true">
+                      <circle cx="9" cy="9" r="8.2" fill="none" stroke="currentColor" stroke-width="1.2" />
+                      <path d="M5 9.4l2.9 2.7L13.2 6.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="carousel__controls">
+      <button class="round-btn" type="button" data-prev aria-label="Passo anterior">
+        <span aria-hidden="true">←</span>
+      </button>
+      <div class="carousel__dots" role="group" aria-label="Escolher passo">
+        {steps.map((s, i) => (
+          <button type="button" class="dot" data-dot={i} aria-label={`Passo ${i + 1}: ${s.title}`} aria-current={i === 0 ? 'true' : undefined}></button>
+        ))}
+      </div>
+      <button class="round-btn" type="button" data-next aria-label="Passo seguinte">
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+    <p class="visually-hidden" aria-live="polite" data-live></p>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import OceanBg from './OceanBg.astro';
+import IconWhatsApp from './IconWhatsApp.astro';
+import { PHONE_E164 } from '../consts';
+
+const needs = ['Redes sociais', 'Website', 'Vídeo', 'Tráfego pago'];
+---
+
+<section class="section contact" id="contacto" aria-labelledby="contacto-titulo">
+  <OceanBg class="contact__bg" />
+  <div class="wrap contact__grid">
+    <div class="contact__intro">
+      <h2 class="title" id="contacto-titulo">Contacte-nos!</h2>
+      <p>Conte-nos o seu projeto e definimos, em conjunto, o <strong>próximo passo</strong>.</p>
+    </div>
+
+    <!-- Sem JavaScript, o formulário abre o WhatsApp diretamente; com JavaScript, a mensagem é montada a partir dos campos. -->
+    <form class="glass form" action="https://api.whatsapp.com/send" method="get" target="_blank" rel="noopener noreferrer" data-wa-form novalidate>
+      <input type="hidden" name="phone" value={PHONE_E164} />
+
+      <div class="field">
+        <label for="f-nome">O seu nome</label>
+        <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="60" placeholder="Ana Ferreira" aria-describedby="f-erro" />
+      </div>
+
+      <div class="field">
+        <label for="f-negocio">O seu negócio</label>
+        <input id="f-negocio" name="negocio" type="text" autocomplete="organization" maxlength="80" placeholder="Café Atlântico, Vila do Conde" />
+      </div>
+
+      <fieldset class="field">
+        <legend>Precisa de</legend>
+        <div class="chips">
+          {needs.map((n, i) => (
+            <label class="chip">
+              <input type="checkbox" name="servico" value={n} checked={i === 0} />
+              <span>{n}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <p class="form__error" id="f-erro" role="alert" data-form-error hidden></p>
+
+      <button class="btn btn--light btn--block" type="submit">
+        <IconWhatsApp size={18} />
+        Enviar pelo WhatsApp
+      </button>
+      <p class="form__note">Abre o WhatsApp com a mensagem já escrita. Não guardamos dados.</p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Work from '../components/Work.astro';
+import Steps from '../components/Steps.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+---
+
+<Base title="Wave Studio · Redes sociais, websites e vídeo no Norte">
+  <Header />
+  <main id="conteudo" tabindex="-1">
+    <Hero />
+    <Services />
+    <Work />
+    <Steps />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+  <WhatsAppFab />
+</Base>
+
+<script>
+  import '../scripts/main.ts';
+</script>

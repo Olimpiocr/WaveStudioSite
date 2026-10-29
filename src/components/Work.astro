@@ -1,0 +1,62 @@
+---
+import { Picture } from 'astro:assets';
+import gymnafiel from '../assets/img/gymnafiel.png';
+import joao from '../assets/img/joao-angeiras.jpg';
+import fisiobox from '../assets/img/fisiobox.png';
+
+const cases = [
+  {
+    name: 'Gymnafiel',
+    tag: 'Redes sociais',
+    img: gymnafiel,
+    alt: 'Telemóvel na mão com o perfil de Instagram do Gymnafiel e o feed criado pela Wave Studio',
+    href: 'https://www.instagram.com/gymnafiel_csrdcsantiago/',
+    cta: 'Ver Instagram',
+    big: true,
+  },
+  {
+    name: 'João Angeiras',
+    tag: 'Website',
+    img: joao,
+    alt: 'Placa da barbearia João Angeiras, barbeiro, na parede do espaço',
+    href: 'https://barbearia-angeiras.netlify.app/',
+    cta: 'Ver site',
+  },
+  {
+    name: 'Fisiobox',
+    tag: 'Branding + website',
+    img: fisiobox,
+    alt: 'Portátil com o site da Fisiobox aberto na página inicial',
+    href: 'https://fisiobox.netlify.app/',
+    cta: 'Ver site',
+  },
+];
+---
+
+<section class="work" id="trabalhos" aria-labelledby="trabalhos-titulo">
+  <h2 class="visually-hidden" id="trabalhos-titulo">Trabalhos</h2>
+  <ul class="mosaic">
+    {cases.map((c) => (
+      <li class:list={['case', { 'case--big': c.big }]}>
+        <a class="case__link" href={c.href} target="_blank" rel="noopener noreferrer" aria-label={`${c.name}, ${c.tag.toLowerCase()}: ${c.cta.toLowerCase()} (abre numa nova janela)`}>
+          <Picture
+            src={c.img}
+            alt={c.alt}
+            formats={['avif', 'webp']}
+            fallbackFormat="jpg"
+            widths={c.big ? [390, 640, 780, 1080] : [240, 390, 560, 780]}
+            sizes={c.big ? '(min-width: 1024px) 30vw, 100vw' : '(min-width: 1024px) 34vw, 50vw'}
+            quality={72}
+            loading="lazy"
+            class="case__img"
+          />
+          <div class="case__caption">
+            <p class="case__tag">{c.tag}</p>
+            <h3 class="case__name">{c.name}</h3>
+            <span class="visually-hidden">{c.cta} (abre numa nova janela)</span>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

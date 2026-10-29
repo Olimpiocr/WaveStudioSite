@@ -1,0 +1,47 @@
+---
+import OceanBg from './OceanBg.astro';
+import { WA_MESSAGES, waLink, type WaOrigin } from '../consts';
+
+const services: { n: string; title: string; text: string; wa: WaOrigin }[] = [
+  {
+    n: '01',
+    title: 'Gestão de redes sociais',
+    text: 'Planeamos, gravamos e publicamos os conteúdos do seu negócio. A gravação no local está incluída.',
+    wa: 'servico-redes',
+  },
+  {
+    n: '02',
+    title: 'Websites',
+    text: 'Sites claros e rápidos, pensados para transformar visitas em contactos. Com botão direto para o WhatsApp.',
+    wa: 'servico-sites',
+  },
+  {
+    n: '03',
+    title: 'Estratégia e tráfego pago',
+    text: 'Anúncios no Instagram e no Facebook para trazer mais contactos ao seu negócio, com estratégia e acompanhamento.',
+    wa: 'servico-trafego',
+  },
+];
+---
+
+<section class="section services" id="servicos" aria-labelledby="servicos-titulo">
+  <OceanBg class="services__bg" />
+  <div class="wrap">
+    <h2 class="title" id="servicos-titulo">Os nossos<br /> serviços</h2>
+    <ol class="services__list">
+      {services.map((s) => (
+        <li class="service">
+          <div class="service__head">
+            <span class="service__num" aria-hidden="true">{s.n}</span>
+            <h3 class="service__title">{s.title}</h3>
+          </div>
+          <p class="service__text">{s.text}</p>
+          <a class="link-arrow" href={waLink(WA_MESSAGES[s.wa])} target="_blank" rel="noopener noreferrer" data-wa={s.wa}>
+            Pedir orçamento <span aria-hidden="true">→</span>
+            <span class="visually-hidden"> para {s.title.toLowerCase()} pelo WhatsApp (abre numa nova janela)</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import Logo from './Logo.astro';
+import { BRAND, PHONE_DISPLAY, SOCIAL, WA_MESSAGES, waLink } from '../consts';
+
+const links = [
+  { label: 'Instagram', value: '@wavestudio.pt', href: SOCIAL.instagram },
+  { label: 'WhatsApp', value: PHONE_DISPLAY, href: waLink(WA_MESSAGES.geral), wa: 'footer' },
+  { label: 'Facebook', value: BRAND.name, href: SOCIAL.facebook },
+];
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <Logo size="lg" />
+        <p class="footer__tagline">Built in the North.<br /> Made for business.</p>
+      </div>
+      <ul class="footer__links" aria-label="Redes e contacto">
+        {links.map((l) =>
+          l.href ? (
+            <li>
+              <a href={l.href} target="_blank" rel="noopener noreferrer" data-wa={l.wa}>
+                <span class="footer__label">{l.label}</span>
+                <span class="footer__value">{l.value}</span>
+                <span class="footer__arrow" aria-hidden="true">↗</span>
+                <span class="visually-hidden"> (abre numa nova janela)</span>
+              </a>
+            </li>
+          ) : (
+            <li><span class="footer__soon">{l.label}</span></li>
+          ),
+        )}
+      </ul>
+    </div>
+    <p class="footer__giant" aria-hidden="true">Wave<br /> Studio</p>
+    <div class="footer__bottom">
+      <p>© {year} {BRAND.name}</p>
+      <a href="/privacidade">Privacidade</a>
+    </div>
+  </div>
+</footer>

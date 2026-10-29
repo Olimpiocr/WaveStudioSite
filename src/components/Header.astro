@@ -1,0 +1,48 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { href: '/#inicio', label: 'Início' },
+  { href: '/#servicos', label: 'Serviços' },
+  { href: '/#trabalhos', label: 'Trabalhos' },
+  { href: '/#como-trabalhamos', label: 'Como trabalhamos' },
+  { href: '/#sobre', label: 'Sobre' },
+  { href: '/#contacto', label: 'Contacto' },
+];
+---
+
+<header class="site-header" data-header>
+  <div class="site-header__bar">
+    <Logo />
+    <nav class="site-nav" aria-label="Principal">
+      <ul>
+        {links.slice(1).map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+      <span>Menu</span>
+      <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden data-menu>
+  <div class="menu__top">
+    <Logo />
+    <button class="menu__close" type="button" aria-label="Fechar menu" data-menu-close>
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 2l14 14M16 2 2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+    </button>
+  </div>
+  <nav aria-label="Menu móvel">
+    <ol class="menu__links">
+      {links.map((l, i) => (
+        <li>
+          <a href={l.href} data-menu-link>
+            <span class="menu__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+</div>

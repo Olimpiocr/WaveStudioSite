@@ -1,0 +1,13 @@
+---
+// Variação B do logótipo (só letras), tal como no manual de marca.
+interface Props {
+  size?: 'sm' | 'lg';
+  href?: string;
+}
+const { size = 'sm', href = '/#inicio' } = Astro.props;
+---
+
+<a class:list={['logo', `logo--${size}`]} href={href} aria-label="Wave Studio, voltar ao início">
+  <span class="logo__wave" aria-hidden="true">Wave</span>
+  <span class="logo__studio" aria-hidden="true">Studio</span>
+</a>

@@ -1,0 +1,28 @@
+---
+// Fundo de mar visto de cima, espelhado para a espuma ficar à direita.
+// As mesmas larguras em todas as secções: o browser descarrega a imagem uma só vez.
+import { Picture } from 'astro:assets';
+import mar from '../assets/img/mar.png';
+
+interface Props {
+  priority?: boolean;
+  class?: string;
+}
+const { priority = false, class: className } = Astro.props;
+---
+
+<div class:list={['ocean', className]} aria-hidden="true">
+  <Picture
+    src={mar}
+    alt=""
+    formats={['avif', 'webp']}
+    fallbackFormat="jpg"
+    widths={[640, 1024, 1536]}
+    sizes="100vw"
+    quality={70}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding={priority ? 'sync' : 'async'}
+    class="ocean__img"
+  />
+</div>
