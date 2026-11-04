@@ -16,6 +16,10 @@ export const BRAND = {
 // Número em formato internacional, sem espaços nem "+" (formato exigido pelo wa.me).
 export const PHONE_E164 = '351936018970';
 export const PHONE_DISPLAY = '936 018 970';
+export const EMAIL = 'infowavestudio.pt@gmail.com';
+
+// Zonas onde a Wave Studio trabalha (usadas nos dados estruturados para SEO local).
+export const AREAS = ['Póvoa de Varzim', 'Vila do Conde', 'Vila Nova de Famalicão', 'Braga', 'Porto'];
 
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/wavestudio.pt/',

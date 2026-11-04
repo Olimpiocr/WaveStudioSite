@@ -7,7 +7,7 @@ import '@fontsource/montserrat/latin-600.css';
 import '@fontsource/montserrat/latin-700.css';
 import '@fontsource/montserrat/latin-900.css';
 import '../styles/global.css';
-import { BRAND, PHONE_E164, SITE_URL, SOCIAL } from '../consts';
+import { AREAS, BRAND, EMAIL, PHONE_E164, SITE_URL, SOCIAL } from '../consts';
 
 interface Props {
   title: string;
@@ -28,16 +28,17 @@ const jsonLd = {
       name: BRAND.name,
       slogan: BRAND.tagline,
       description: BRAND.description,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       image: ogImage,
       telephone: `+${PHONE_E164}`,
+      email: EMAIL,
       address: {
         '@type': 'PostalAddress',
         addressLocality: BRAND.city,
         addressRegion: BRAND.region,
         addressCountry: BRAND.country,
       },
-      areaServed: { '@type': 'AdministrativeArea', name: 'Norte de Portugal' },
+      areaServed: AREAS,
       sameAs: [SOCIAL.instagram, SOCIAL.facebook].filter(Boolean),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
@@ -52,7 +53,7 @@ const jsonLd = {
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#site`,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       name: BRAND.name,
       inLanguage: 'pt-PT',
       publisher: { '@id': `${SITE_URL}/#empresa` },
